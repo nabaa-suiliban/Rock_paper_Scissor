@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sissor</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://kit.fontawesome.com/5e4e3cd377.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="resources/css/style.css">
+    <style>
+       
+        .sissorsIcon{
+                transform: rotate(-270deg);
+        }
+        .active{
+            border:2px double rgb(255, 39, 85);
+            padding-bottom: 10px;
+        }
+        .active .titlebox{
+            background-color: rgb(235, 215, 41);
+
+        }
+        .active .titlebox h5::before{
+            content:'\25CF';
+            color : rgb(255, 39, 85);
+            margin-right: 10px;
+            font-size: x-large;
+        }
+        .active button{
+            
+        }
+        #player2-icon{
+            transform: rotate(-180deg);
+        }
+        .vs-icon{
+         
+            width: 20%;
+            background-size: cover;
+        }
+        .timerStyle{
+           
+        }
+    </style>
+</head>
+<body class="bg-light">
+    
+<div class="container bg-white  py-2">
+    <div class="row">
+        <div class="col"> <h1 class="display-6 bg-warning p-2 rounded my-1 text-center">Rock Paper scissors  Game</h1></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-3 ">
+            <div class="card px-3 py-2">
+                <div class="card-header ">
+                    <h4 class="card-title ">Your Score</h4>
+                </div>
+   
+                <div class="card-body " >
+                    <table class="table table-responsive " >
+                        <thead>
+                            <tr> 
+                                <th>Roud</th>
+                                <th>Winner</th>
+                                <th>Loser</th>
+                            </tr> 
+                        </thead>
+                        <tbody >
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="table-success ">player1</td> 
+                                <td class="table-danger">player2</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="table-success ">player2</td> 
+                                <td class="table-danger">player1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             
+        </div>
+
+        <div class="col-sm-9 d-flex flex-column align-items-center justify-content-between" 
+        style="height: auto;">
+
+                <!-- player2 section -->
+                <div class=" d-flex flex-column  align-items-center justify-content-between  " 
+                style="width: 100%;" id="player2-section"> 
+                    
+                    <div class=" align-self-start px-3  rounded-pill titlebox m-1">
+                        <h5 >Player 2</h5>
+                    </div>
+
+                    <div class="d-flex  justify-content-center mx-auto" style="width: 100%;" > 
+                        <img  id="graham-img" class="img-rounded img-fluid d-block "  src="img/hello.png" alt="photo" width="20%">
+                        <p class="mt-5" id="chatt" style="width:40%; word-wrap: break-word;">Hello I'm Graham, Looking forward to challenge you!</p>
+                    </div>
+
+                </div>
+
+                <!-- battle area      -->
+                <div class="box rounded d-flex justify-content-center align-items-center py-3 my-3" 
+                style="width:100%;background-color: rgb(168, 205, 255); height: 30vh;">
+                    <!-- start Button -->
+                    <button type="button" id="btn-start" class="rounded-3 btn btn-warning btn-lg px-5 d-block" >Start</button>
+                    <!-- Timer -->
+                    <h4 id="timer" class="display-4 timerStyle d-none"></h4>
+                    <!-- battle area -->
+                    <div id="battle-area" class="battel-box   d-none" style="width: 100%;">
+                        <!-- player2 icon  -->
+                        <div class="row ">
+                           
+                            <div class="col-6 d-flex justify-content-end"><i id="player2-icon" class="player-icon text-light fs-1 p-3 rounded-circle bg-secondary fas fa-hand-rock fs-2"></i></div>
+                            <div class="col-6"><h4 id="player2-resualt" class="display-6 text-danger "></h4></div>
+                        </div>
+                        <!-- divider -->
+                        <div class="vs-icon p-1  " style="width: 100%;"><h5 class="text-center">vs</h5></div>
+
+                        <!-- player1 icon  -->
+                        <div class="row " style="width: 100%;">
+                           
+                            <div class="col-6 d-flex justify-content-end">
+                                <i id="player1-icon" class="float-right   player-icon text-light fs-1 p-3 rounded-circle bg-secondary fas fa-hand-rock fs-2"></i>
+                            </div>
+                            <div class="col-6"><h4 id="player1-resualt" class="display-6 text-success "></h4></div>
+                        </div>
+                    </div>
+        
+                    
+                </div>
+
+
+                <!-- player1 section -->
+                <div class = "d-flex flex-column  align-items-center justify-content-between  " 
+                style="width: 100%;" id="player1-section">
+                    <div  class="  align-self-start px-3  rounded-pill m-1 titlebox">
+                        <h5>Player 1</h5>
+                    </div>
+                        
+                        <div class="btn-group d-flex justify-content-center" style="width: 60%;">
+                           
+                            <button type="button" id="btn-rock"  class="allBtn btn btn-lg py-4 btn-primary text-light disabled" >
+                                <i class="fas fa-hand-rock fs-2"></i>
+                            </button>
+                  
+                            <button type="button" id="btn-sissors" class="btn btn-lg fs-2 btn-success disabled" >
+                                <i class="sissorsIcon fas fa-hand-scissors"></i>
+                            </button>
+
+                            <button type="button" id="btn-papper" class="btn btn-lg fs-2 btn-danger disabled" >
+                                <i class="fas fa-hand-paper"></i>
+                            </button>
+  
+                        </div>
+            
+                </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <script src="js/bootstrap.bundle.min.js" ></script>
+        <script src="js/bootstrap.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+        <script src="resources/js/main.js"></script>
+    </body>
+</html>
